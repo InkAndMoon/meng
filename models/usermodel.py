@@ -15,7 +15,7 @@ class User(Base):
             Index("phone_UNIQUE",'phone')
         )
         id: Mapped[int] = mapped_column(Integer,primary_key=True,autoincrement=True,comment="用户id")
-        useranme: Mapped[str] = mapped_column(String(50),unique=True,nullable=True,comment="用户名")
+        username: Mapped[str] = mapped_column(String(50),unique=True,nullable=True,comment="用户名")
         phone: Mapped[str] = mapped_column(String(11),unique=True,nullable=True,comment="手机号")
         password: Mapped[str] = mapped_column(String(50),nullable=True,comment="密码")
         create_time: Mapped[datetime] = mapped_column(DateTime,nullable=True,comment="创建时间",default=datetime.now())

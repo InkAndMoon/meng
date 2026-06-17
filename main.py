@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
-from router import user
+from router.user import usersrouter
 
 app = FastAPI()
 app.add_middleware(
@@ -24,7 +24,7 @@ async def say_hello(name: str):
 
 #挂载路由
 # 现在只挂载用户
-app.include_router(user)
+app.include_router(usersrouter.router)
 
 if __name__ == '__main__':
     uvicorn.run(app, host="0.0.0.0", port=8000,reload= True)
