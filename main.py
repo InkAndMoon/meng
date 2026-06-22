@@ -2,8 +2,10 @@ import uvicorn
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 from router.user import usersrouter
+from utils.error_handler_relation import register_exception_handlers
 
 app = FastAPI()
+# 跨域
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],    # 允许访问的源（网络地址）
@@ -11,7 +13,8 @@ app.add_middleware(
     allow_methods=["*"],    # 允许的请求方法
     allow_headers=["*"],    # 允许的请求头
 )
-
+# 异常处理
+register_exception_handlers(app)
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
